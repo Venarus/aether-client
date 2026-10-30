@@ -77,6 +77,7 @@ tasks.named('jar', Jar) {
     archiveVersion.set('1.0.0')
     archiveClassifier.set('')
 
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     reproducibleFileOrder = true
     preserveFileTimestamps = false
     entryCompression = ZipEntryCompression.DEFLATED
