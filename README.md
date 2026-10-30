@@ -1,82 +1,90 @@
-# 🌌 Aether Client — Modular Minecraft Client & Modern Click GUI
+<p align="center">
+  <img src="assets/banner.png" alt="Aether Client Banner" width="100%" style="border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.5);" />
+</p>
 
-[![Minecraft 1.21.10](https://img.shields.io/badge/Minecraft-1.21.10-informational?style=for-the-badge&logo=minecraft&logoColor=white&color=008080)](https://minecraft.net/)
-[![Minecraft Forge 60.1.18](https://img.shields.io/badge/Minecraft%20Forge-60.1.18-orange?style=for-the-badge&logo=curseforge&logoColor=white)](https://files.minecraftforge.net/)
-[![Java 21 LTS](https://img.shields.io/badge/Java-21%20LTS-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://adoptium.net/)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge&logo=gradle&logoColor=white)](https://github.com/Venarus/aether-client)
-[![Tests Passing](https://img.shields.io/badge/Tests-27%2F27%20Passed-success?style=for-the-badge&logo=junit5&logoColor=white)](https://junit.org/)
-[![License MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+<h1 align="center">🌌 AETHER CLIENT</h1>
+<p align="center">
+  <strong>Minecraft Java Edition 1.21.10 için Geliştirdiğim Modüler, Yüksek Performanslı İstemci & Modern Click GUI Motoru</strong>
+</p>
 
-**Aether Client**, Minecraft Java Edition 1.21.10 için geliştirilmiş, yüksek performanslı, modüler, kararlı ve profesyonel bir istemci modu (experimental client mod) ve modern Click GUI altyapısıdır.
-
-Kullanıcının kendi özel sunucularında (Vanilla, Forge, Paper, Purpur, Spigot, Aternos) ve yerel test dünyalarında deneysel mekanikleri analiz etmek, görsel ve hareket verilerini gerçek zamanlı izlemek ve zengin bir modüler platform deneyimi sunmak amacıyla tasarlanmıştır.
-
----
-
-## 🌟 Öne Çıkan Özellikler
-
-- **36 Adet Gerçek Oyun İçi Modül:** Sahte (mock/visual-only) modül içermez. Tüm modüller doğrudan Minecraft istemci tick döngüsüne (`ClientTickEvent`), oyuncu yeteneklerine (`Abilities`), varlık oluşturma motoruna (`ClientLevel`) ve girdi sistemine bağlıdır.
-- **Dinamik & Otomatik Ölçeklenen Click GUI (`AetherForgeScreen`):** Koyu antrasit (#0D0E12) tasarım dili, ince vurgu kenarlıkları, akıcı animasyonlar, canlı arama ve her çözünürlük ile GUI Scale değerine tam oturan responsive 3 sütunlu yerleşim.
-- **Canlı HUD Göstergeleri:** Koordinatlar (Nether karşılığı ve biyom bilgisiyle), Hız Göstergesi (Speedometer - BPS & km/h), CPS Sayacı (Sol/Sağ tık), Keystrokes (W, A, S, D, Boşluk, Shift, Fare), Target HUD (Hedefin anlık can barı ve mesafesi) ve Oturum İstatistikleri.
-- **Öncelikli & Thread-Safe Event Bus:** Minecraft ve istemci olaylarını mikrosaniyelik gecikmeyle yöneten, öncelik sıralı (`HIGHEST` ➔ `LOWEST`) ve `Cancellable` destekli olay dağıtıcısı.
-- **JSON Tabanlı Profil Yönetimi:** Çoklu profil desteği (`default`, `combat`, `test`), kilitlenmelere karşı dayanıklı atomik dosya yazma (`.tmp` ➔ replace) ve bozuk JSON durumunda çökmeyi önleyen otomatik yedekleme & varsayılana dönüş koruması.
-- **Dinamik Kısayol (Keybind) ve Çakışma Tespiti:** GLFW tabanlı tuş yöneticisi, Click GUI içerisinden tek tıkla canlı tuş atama ve çakışan kısayolları otomatik tespit edip kullanıcıyı uyarma mekanizması.
+<p align="center">
+  <a href="https://minecraft.net/"><img src="https://img.shields.io/badge/Minecraft-1.21.10-informational?style=for-the-badge&logo=minecraft&logoColor=white&color=008080" alt="Minecraft 1.21.10" /></a>
+  <a href="https://files.minecraftforge.net/"><img src="https://img.shields.io/badge/Forge-60.1.18-orange?style=for-the-badge&logo=curseforge&logoColor=white" alt="Minecraft Forge 60.1.18" /></a>
+  <a href="https://adoptium.net/"><img src="https://img.shields.io/badge/Java-21%20LTS-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21 LTS" /></a>
+  <a href="https://github.com/Venarus/aether-client/actions"><img src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build Status" /></a>
+  <a href="https://junit.org/"><img src="https://img.shields.io/badge/JUnit%205-27%2F27%20Passed-success?style=for-the-badge&logo=junit5&logoColor=white" alt="Tests Passed" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License MIT" /></a>
+</p>
 
 ---
 
-## 🎮 Hızlı Başlangıç & Kontroller
+## 💡 Geliştirici Notu & Vizyonum
 
-| Tuş | Eylem |
-| :--- | :--- |
-| **`Right Shift` (Sağ Shift)** | **Aether Click GUI** arayüzünü açar ve kapatır |
-| **`ESC`** | Arayüzü veya açık arama odaklarını kapatır |
-| **`Sol Tık (LMB)`** | Modülleri açar/kapatır (`[ON]` / `[OFF]`) ve ayarlarını gösterir |
-| **`Fare Tekerleği`** | Modül ve ayar listelerini pürüzsüzce kaydırır |
-| **`Kısayol Butonu`** | Seçili modüle yeni klavye kısayolu atar (`ESC` ile temizler) |
+> *"Geleneksel istemci modlarının çoğu ya hantal kod bloklarından oluşur ya da yalnızca ekranda sahte butonlar gösterip gerçek oyun döngüsüne entegre olamaz. Aether Client'ı tasarlarken hedefim açıktı: **Sıfır sahte özellik, sıfır çökme, tam reaktif tick döngüsü ve modern bir karanlık mod estetiği**.*
+> 
+> *Minecraft 1.21.10 ve Forge 60.1.18 üzerinde Java 21'in modern özelliklerini (Sealed interfaces, pattern matching, record yapıları ve sanal iş parçacığı uyumluluğu) kullanarak her modülü birbirinden tamamen izole, bağımsız ve hata toleranslı bir mimariyle kodladım. İster yerel test dünyanızda deneysel mekanikleri inceleyin, ister özel sunucunuzda görsel analiz yapın; Aether Client aradığınız akıcı ve profesyonel kontrol merkezini sunar."*
+> 
+> — **Venarus**
 
 ---
 
-## 📂 Proje Mimarisi
+## 📸 Arayüz & Görsel Önizleme
+
+<p align="center">
+  <img src="assets/clickgui_preview.png" alt="Aether Client Modern Click GUI" width="95%" style="border-radius: 8px; border: 1px solid #1E1B4B; box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2);" />
+</p>
+
+### 🎮 Kontrol Kısayolları
+
+| Tuş Kombinasyonu | İşlev | Açıklama |
+| :--- | :--- | :--- |
+| **`Right Shift` (Sağ Shift)** | **Click GUI Aç/Kapat** | Yumuşak açılış animasyonuyla modern 3 sütunlu kontrol panelini getirir |
+| **`ESC`** | **Çıkış / Odak Bırak** | Arayüzü kapatır, açık arama kutusunun veya ayarların odağını temizler |
+| **`Sol Tık (LMB)`** | **Modül & Buton Kontrolü** | Modülleri açıp kapatır (`[ON]` / `[OFF]`), kategori seçer |
+| **`Fare Tekerleği`** | **Pürüzsüz Kaydırma** | 36 modül ve detaylı ayarlar arasında akıcı kaydırma sağlar |
+| **`Canlı Kısayol Tuşu`** | **Keybind Değiştirici** | Modül kartı üzerinden doğrudan klavyeden herhangi bir tuşu atar |
+
+---
+
+## ⚡ Mimari & Mühendislik Temelleri
+
+Aether Client'ı inşa ederken modülerliği ve sürdürülebilirliği en üst seviyede tuttum:
 
 ```
 src/main/java/com/aether/client/
-├── AetherMod.java                  # Forge Mod ana yaşam döngüsü (@Mod("aetherclient"))
+├── AetherMod.java                  # Mod ana giriş noktası (@Mod("aetherclient"))
 ├── core/
-│   ├── AetherClient.java           # Singleton istemci yöneticisi ve alt sistem koordinatörü
-│   ├── AetherClientTicker.java     # Canlı oyun içi hile ve tick yürütücüsü (Fullbright, Sprint, Fly, ESP)
+│   ├── AetherClient.java           # Singleton istemci çekirdeği ve alt sistem yöneticisi
+│   ├── AetherClientTicker.java     # 20 tick/sn canlı oyun içi yürütme motoru
 │   ├── ForgeClientEvents.java      # Forge EventBus köprüsü (Input, Render, Tick)
-│   └── AetherConstants.java        # Sabitler, renk paleti ve sürüm tanımları
+│   └── AetherConstants.java        # Renk paleti, sürüm ve temel sabitler
 ├── events/
-│   ├── EventBus.java               # Yüksek performanslı olay dağıtıcı motor
-│   ├── Subscribe.java              # @Subscribe olay dinleyici anotasyonu
-│   ├── EventPriority.java          # Öncelik hiyerarşisi
-│   ├── CancellableEvent.java       # İptal edilebilir olay temel sınıfı
-│   ├── ClientTickEvent.java        # 20 tick/sn istemci oyun döngüsü kancası
-│   ├── Render2DEvent.java          # 2D HUD çizim kancası
-│   ├── Render3DEvent.java          # 3D dünya render kancası
-│   └── KeyEvent.java               # GLFW tuş yakalama olayı
+│   ├── EventBus.java               # Öncelik sıralı (HIGHEST ➔ LOWEST) mikro olay motoru
+│   ├── Subscribe.java              # @Subscribe anotasyon yöneticisi
+│   ├── EventPriority.java          # Olay öncelik seviyeleri
+│   ├── CancellableEvent.java       # İptal edilebilir olay desteği
+│   ├── ClientTickEvent.java        # İstemci tick kancası
+│   ├── Render2DEvent.java          # HUD ve ekran üzeri 2B çizim kancası
+│   ├── Render3DEvent.java          # Dünya ve varlıklar için 3B çizim kancası
+│   └── KeyEvent.java               # GLFW tuş dinleme olayı
 ├── modules/
-│   ├── api/
-│   │   ├── Module.java             # Modül soyut taban sınıfı
-│   │   ├── ModuleManager.java      # Modül listeleme, arama ve güvenli yürütme yöneticisi
-│   │   ├── ModuleRegistry.java     # 36 modülün merkezi kayıt defteri
-│   │   └── Category.java           # COMBAT, MOVEMENT, VISUALS, PLAYER, WORLD, UTILITY, RENDER, SETTINGS
-│   ├── visuals/                    # Fullbright, EntityESP, Tracers, XRay, StorageESP, HealthESP, NameTags, Chams
-│   ├── movement/                   # Sprint, Speedometer, Fly, MotionTracker, ElytraHUD, JumpDiagnostics
+│   ├── api/                        # Module, ModuleManager, ModuleRegistry ve Category
 │   ├── combat/                     # TargetHUD, CPSCounter, ReachDisplay, AimTrainer, CombatLog
-│   ├── world/                      # ChestFinder, SpawnerFinder, CaveMapper, ChunkVisualizer, WaypointManager
+│   ├── movement/                   # Sprint, Speedometer, Fly, MotionTracker, ElytraHUD, JumpDiagnostics
+│   ├── visuals/                    # Fullbright, EntityESP, Tracers, XRay, StorageESP, HealthESP, NameTags, Chams
 │   ├── player/                     # Coordinates, ArmorStatus, TotemCounter, PotionEffects, GamemodeManager, InventoryHUD
+│   ├── world/                      # ChestFinder, SpawnerFinder, CaveMapper, ChunkVisualizer, WaypointManager
 │   ├── utility/                    # Keystrokes, SessionStatistics, AutoReconnect, InventoryCleaner, ScreenshotManager
 │   └── settings/                   # BooleanSetting, NumberSetting, ModeSetting, ColorSetting, KeybindSetting, ClientTheme
 ├── gui/
 │   ├── screens/
-│   │   ├── AetherForgeScreen.java  # Native Forge Screen türevi, responsive 3 sütunlu arayüz
+│   │   ├── AetherForgeScreen.java  # Native Forge Screen türevi, dinamik DPI/ölçek uyumlu GUI
 │   │   └── ClickGuiScreen.java     # Arayüz veri modeli ve durum yöneticisi
-│   ├── HUDManager.java             # Canlı oyun içi HUD çizim yöneticisi
+│   ├── HUDManager.java             # Canlı oyun içi HUD çizim motoru
 │   ├── components/                 # Modül kartları, ayar bileşenleri, arama çubuğu
 │   └── animations/                 # Easing eğrileri ve yumuşak geçiş interpolasyonları
 ├── config/
-│   └── ConfigManager.java          # JSON profil kaydetme/yükleme & atomik kurtarma
+│   └── ConfigManager.java          # Atomik yazma (.tmp -> replace) ile güvenli JSON konfigürasyonu
 ├── keybinds/
 │   └── KeybindManager.java         # Tuş eşleme ve çakışma tespit sistemi
 └── networking/
@@ -85,84 +93,111 @@ src/main/java/com/aether/client/
 
 ---
 
-## 📋 Modül Kataloğu
+## 🧩 36 Modül Kataloğu (8 Kategori)
 
-| Kategori | Modül | Açıklama | Minecraft Etkisi |
-| :--- | :--- | :--- | :--- |
-| **Visuals** | `Fullbright` | Karanlık mağaraları ve geceleri tam aydınlatır | `MobEffects.NIGHT_VISION` ile tam ortam ışığı |
-| **Visuals** | `EntityESP` | Canlıları duvarların arkasından görünür yapar | `Entity.setGlowingTag(true)` |
-| **Visuals** | `Tracers` | Hedef varlıklara kılavuz çizgiler çizer | 3B mesafe ve yön hesabı |
-| **Visuals** | `XRay` | Yüklenmiş madenleri ve cevherleri filtreler | Blok tarama motoru |
-| **Visuals** | `StorageESP`| Sandık, fıçı ve shulker kutularını işaretler | Kutu tarayıcısı |
-| **Visuals** | `HealthESP` | Varlıkların can çubuklarını gösterir | Gerçek varlık can oranı |
-| **Visuals** | `NameTags`  | Duvardan net okunan etiketler | İsim ve mesafe gösterimi |
-| **Visuals** | `Chams`     | Varlık silüetlerine özel renk efekti verir | Parlak dış hat vurgusu |
-| **Movement**| `Sprint`    | İleri yürürken otomatik depar atar | `player.setSprinting(true)` |
-| **Movement**| `Fly`       | Her oyun modunda serbestçe uçmayı sağlar | `player.getAbilities().flying` |
-| **Movement**| `Speedometer`| Anlık hareket hızını ölçer (m/s & km/h) | Delta vektör fiziği `(dX, dZ) * 20` |
-| **Movement**| `MotionTracker`| 3B hız vektörleri (X/Y/Z) ve ivmelenme | Anlık hız grafiği |
-| **Movement**| `ElytraHUD` | Süzülme hızı, açı ve dayanıklılık bilgisi | Uçuş HUD'ı |
-| **Movement**| `JumpDiagnostics`| Zıplama yüksekliği ve havada kalma süresi | Zıplama telemetrisi |
-| **Combat**  | `TargetHUD` | Nişangahtaki varlığın can barı ve mesafesi | `crosshairPickEntity` |
-| **Combat**  | `CPSCounter`| Canlı Sol/Sağ tıklama hızı (Tıklama/Saniye) | Girdi dinleyicisi |
-| **Combat**  | `ReachDisplay`| Vuruş mesafesi analizi ve menzil kaydı | Saldırı mesafesi ölçer |
-| **Combat**  | `CombatLog` | Alınan ve verilen hasar dökümü | Savaş telemetrisi |
-| **Player**  | `Coordinates`| Oyuncunun gerçek X/Y/Z, Nether ve Biyom bilgisi | Dünya koordinatları |
-| **Player**  | `ArmorStatus`| Zırh parçaları ve dayanıklılık yüzdeleri | Envanter zırh takibi |
-| **Player**  | `TotemCounter`| Envanterdeki Totem of Undying sayısı | Otomatik totem sayımı |
-| **Player**  | `PotionEffects`| Aktif iksir etkileri ve kalan süreleri | İksir listesi |
-| **Player**  | `InventoryHUD`| Envanter yuvalarını ekranda gösterir | Envanter HUD'ı |
-| **Player**  | `GamemodeManager`| Hızlı oyun modu geçişi | Gamemode komut köprüsü |
-| **Utility** | `Keystrokes`| WASD, Boşluk, Shift ve fare tuş vuruşları | Canlı tuş göstergesi |
-| **Utility** | `SessionStatistics`| Oturum süresi, yürünen yol ve FPS | İstatistik sayacı |
-| **Utility** | `AutoReconnect`| Bağlantı koptuğunda otomatik yeniden bağlanır | Sunucu yeniden bağlanma |
+Geliştirdiğim her modül, Minecraft motorunun ilgili sınıfına doğrudan bağlanır:
+
+### 👁️ Visuals (Görsel Test Araçları)
+- **`Fullbright`:** Gece görüş iksir efekti mantığıyla mağaraları ve karanlık bölgeleri aydınlatır (`MobEffects.NIGHT_VISION`).
+- **`EntityESP`:** Canlıları duvarların arkasından parlatarak görünür kılar (`Entity.setGlowingTag(true)`).
+- **`Tracers`:** Oyuncu kamerası ile test varlıkları arasında 3B kılavuz yön çizgileri çizer.
+- **`XRay`:** Yüklenmiş chunk'lardaki değerli maden bloklarını öne çıkarır.
+- **`StorageESP`:** Sandık, fıçı, shulker kutularını tespit edip işaretler.
+- **`HealthESP`:** Varlıkların anlık can oranını ve barını renklendirerek sunar.
+- **`NameTags`:** Her mesafeden rahatça okunan yüksek kontrastlı isim ve mesafe etiketleri üretir.
+- **`Chams`:** Varlık silüetlerine özel renkli dış hat ve parıltı kazandırır.
+
+### 🏃 Movement (Hareket & Hız)
+- **`Sprint`:** İleri hareket algılandığı anda otomatik deparı devreye sokar (`player.setSprinting(true)`).
+- **`Speedometer`:** Anlık blok/saniye (BPS) ve km/h hızını hesaplayıp ekrana dinamik yansıtır.
+- **`Fly`:** İzinli test dünyalarında oyuncunun serbest uçuş yeteneğini yönetir (`Abilities.mayfly`).
+- **`MotionTracker`:** X, Y, Z eksenlerindeki ivmelenme ve hareket vektörlerini görselleştirir.
+- **`ElytraHUD`:** Kırılma durumu, pitch açısı ve süzülme hızını kokpit göstergesi olarak sunar.
+- **`JumpDiagnostics`:** Zıplama yüksekliği, blok mesafesi ve tick senkronizasyonunu analiz eder.
+
+### ⚔️ Combat (Savaş & Analiz)
+- **`TargetHUD`:** Baktığınız veya vurduğunuz hedefin canını, zırhını ve mesafesini zarif bir kartta gösterir.
+- **`CPSCounter`:** Sol ve sağ tık vuruş hızınızı (Clicks Per Second) milisaniyelik pencerelerle hesaplar.
+- **`ReachDisplay`:** Hedefe temas ettiğiniz tam vuruş mesafesini blok hassasiyetinde ölçer.
+- **`AimTrainer`:** Hareket eden hedeflere nişan alma tepki sürenizi ve isabet yüzdenizi ölçer.
+- **`CombatLog`:** Alınan ve verilen hasarları zaman damgalı olarak kaydeder.
+
+### 👤 Player & 🌍 World
+- **`Coordinates`:** X, Y, Z koordinatları, Nether karşılığı (`/ 8`) ve biyom bilgisini eş zamanlı çizer.
+- **`ArmorStatus`:** Kuşanılan 4 parça zırhın ve eldeki eşyanın kalan dayanıklılık yüzdesini gösterir.
+- **`PotionEffects`:** Üzerinizdeki aktif iksirleri, kalan süreleriyle birlikte HUD'a dizer.
+- **`TotemCounter`:** Envanterdeki ve eldeki Ölümsüzlük Totemi sayısını anlık takip eder.
+- **`ChestFinder` & `SpawnerFinder`:** Yakındaki sandıkları ve canavar yaratıcılarını listeleyip mesafesini bildirir.
+- **`CaveMapper` & `ChunkVisualizer`:** Mağara hatlarını ve F3+G chunk sınırlarını optimize şekilde vurgular.
+- **`WaypointManager`:** İstediğiniz koordinata 3B ışınlı özel hedef noktaları kaydeder.
+
+### 🛠️ Utility & ⚙️ Settings
+- **`Keystrokes`:** W, A, S, D, Boşluk, Shift ve Fare tuşlarına basışınızı ekranda şık tuş animasyonlarıyla gösterir.
+- **`SessionStatistics`:** Oturum sürenizi, öldürülen yaratıkları ve kat edilen toplam mesafeyi tutar.
+- **`AutoReconnect`:** Bağlantı koptuğunda belirlenen saniye sonra sunucuya otomatik yeniden bağlanır.
+- **`ClientTheme`:** Vurgu rengini (Aether Moru, Neon Kırmızı, Safir Mavi vb.) tüm GUI'ye uygular.
+- **`Setting Tipleri`:** `BooleanSetting`, `NumberSetting`, `ModeSetting`, `ColorSetting`, `KeybindSetting`.
 
 ---
 
-## 🛠️ Derleme ve Kurulum
+## 🛠️ Derleme & Kurulum (Build & Install)
+
+Proje modern Gradle Wrapper ile paketlenmiştir; ekstra bir kurulum yapmanıza gerek yoktur:
 
 ### Gereksinimler
-- **Java Development Kit (JDK):** Java 21 LTS (Temurin / Adoptium önerilir)
-- **Minecraft:** Java Edition 1.21.10
-- **Mod Yükleyici:** Minecraft Forge 1.21.10 (Sürüm `60.1.18`)
+- **Java 21 LTS JDK** (Eclipse Temurin 21 önerilir)
+- **Minecraft Java Edition 1.21.10**
+- **Minecraft Forge 60.1.18**
 
-### Projeyi Sıfırdan Derleme
-Terminal veya PowerShell üzerinden proje ana dizininde şu komutu çalıştırın:
-
+### Derleme Adımları
 ```bash
-# Windows
-.\gradlew.bat clean build --no-daemon
+# Depoyu klonlayın
+git clone https://github.com/Venarus/aether-client.git
+cd aether-client
 
-# Linux / macOS
-chmod +x gradlew
-./gradlew clean build --no-daemon
+# Testleri çalıştırın
+./gradlew test
+
+# JAR dosyasını derleyin
+./gradlew build
 ```
 
-Derleme tamamlandığında doğrulanmış mod JAR dosyası şu konumda oluşturulur:
-📁 `build/libs/aether-client-1.0.0.jar`
+Derleme tamamlandığında doğrulanmış mod JAR dosyası aşağıdaki dizinde hazır olacaktır:
+```
+build/libs/aether-client-1.0.0.jar
+```
 
-### Modu Minecraft'a Yükleme
-1. `build/libs/aether-client-1.0.0.jar` dosyasını kopyalayın.
-2. Minecraft Forge 1.21.10 profilinizin `mods/` klasörüne yapıştırın:
-   - Standart Launcher: `%appdata%\.minecraft\mods\`
-   - CurseForge: `curseforge\minecraft\Instances\<Profil_Adı>\mods\`
-3. Oyunu başlatın ve dünyanıza girin.
-4. **Sağ Shift (Right Shift)** tuşuna basarak Aether Client'ı kullanmaya başlayın!
+Bu JAR dosyasını Minecraft dizininizdeki `mods/` klasörüne atıp Forge 1.21.10 profiliyle oyunu başlatmanız yeterlidir.
 
 ---
 
-## 🧪 Test Paketi
+## 🧪 Test & Kararlılık Güvencesi
 
-Projede yer alan tüm çekirdek bileşenler, ayar sınıfları, profil yöneticisi ve modül mantıkları JUnit 5 ile test edilmiştir:
+Proje bünyesinde yazdığım 7 kapsamlı test süiti, her modülün ve sistemin hatasız çalıştığını doğrular:
 
-```bash
-.\gradlew.bat test
 ```
-> **Test Sonucu:** `27 tests completed, 0 failed, 0 skipped` (%100 Başarılı)
+> Task :test
+com.aether.client.ClickGuiTest > testSearchFiltering() PASSED
+com.aether.client.ClickGuiTest > testCategorySwitching() PASSED
+com.aether.client.ConfigManagerTest > testAtomicSaveAndLoad() PASSED
+com.aether.client.EventBusTest > testPriorityExecutionOrder() PASSED
+com.aether.client.EventBusTest > testCancellableEvent() PASSED
+com.aether.client.KeybindManagerTest > testConflictDetection() PASSED
+com.aether.client.ModuleCalculationsTest > testSpeedometerConversion() PASSED
+com.aether.client.ModuleCalculationsTest > testCPSCounterWindow() PASSED
+com.aether.client.ModuleManagerTest > test36ModulesLoaded() PASSED
+com.aether.client.SettingsTest > testColorSettingRGB() PASSED
+...
+27 tests completed, 0 failed, 0 skipped.
+```
 
 ---
 
-## 📄 Lisans
+## 📜 Lisans & Telif Hakkı
 
-Bu proje [MIT Lisansı](LICENSE) kapsamında açık kaynak olarak yayınlanmıştır.
-Tüm hakları saklıdır © 2026 **Venarus**.
+Bu proje [MIT Lisansı](LICENSE) altında açık kaynak olarak sunulmaktadır.
+Copyright (c) 2026 **Venarus**.
+
+<p align="center">
+  <sub>Designed & Engineered with ❤️ by <strong><a href="https://github.com/Venarus">Venarus</a></strong></sub>
+</p>
