@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[60,)"
+license="Proprietary / Experimental"
+issueTrackerURL="https://github.com/aether-client/issues"
+
+[[mods]]
+modId="aetherclient"
+version="1.0.0"
+displayName="Aether Client"
+displayURL="https://github.com/aether-client"
+logoFile="logo.png"
+credits="Developed by Aether Engineering Pair"
+authors="Senior Java & Minecraft UI/UX Engineer"
+description='''
+Professional Minecraft Experimental Client & Modular Click GUI for Minecraft Java Edition 1.21.10.
+Includes 33+ comprehensive test modules, real-time analytics, JSON configuration, and security integration.
+'''
+
+[[dependencies.aetherclient]]
+    modId="forge"
+    mandatory=true
+    versionRange="[60,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.aetherclient]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.21.10,)"
+    ordering="NONE"
+    side="CLIENT"

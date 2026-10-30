@@ -1,0 +1,29 @@
+# Gradle caches & build outputs
+.gradle/
+build/
+out/
+bin/
+
+# Temporary generated test runtime data
+/aether/
+/run/
+/logs/
+/crash-reports/
+
+# IDE configurations
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# Operating system files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Java class files
+*.class

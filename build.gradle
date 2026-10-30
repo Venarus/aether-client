@@ -1,0 +1,124 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+group = 'com.aether'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name = 'MinecraftForge'
+        url = 'https://maven.minecraftforge.net/'
+    }
+}
+
+def mcForgeJars = files(
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/net/minecraftforge/forge/1.21.10-60.1.18/forge-1.21.10-60.1.18-client.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/net/minecraftforge/forge/1.21.10-60.1.18/forge-1.21.10-60.1.18-universal.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/net/minecraftforge/fmlcore/1.21.10-60.1.18/fmlcore-1.21.10-60.1.18.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/net/minecraftforge/fmlloader/1.21.10-60.1.18/fmlloader-1.21.10-60.1.18.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/net/minecraftforge/javafmllanguage/1.21.10-60.1.18/javafmllanguage-1.21.10-60.1.18.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/net/minecraftforge/eventbus/7.0.6/eventbus-7.0.6.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/org/joml/joml/1.10.8/joml-1.10.8.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/com/mojang/datafixerupper/8.0.16/datafixerupper-8.0.16.jar',
+    'C:/Users/senem/curseforge/minecraft/Install/libraries/com/mojang/brigadier/1.1.8/brigadier-1.1.8.jar'
+)
+
+dependencies {
+    compileOnly mcForgeJars
+    testImplementation mcForgeJars
+
+    implementation 'com.google.code.gson:gson:2.11.0'
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+
+    // Testing Framework
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+tasks.named('jar', Jar) {
+    archiveBaseName.set('aether-client')
+    archiveVersion.set('1.0.0')
+    archiveClassifier.set('')
+
+    reproducibleFileOrder = true
+    preserveFileTimestamps = false
+    entryCompression = ZipEntryCompression.DEFLATED
+
+    manifest {
+        attributes([
+            'Specification-Title'     : 'aetherclient',
+            'Specification-Vendor'    : 'Aether Development Team',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : 'aetherclient',
+            'Implementation-Version'  : project.version,
+            'Implementation-Vendor'   : 'Aether',
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            'FMLModType'              : 'MOD',
+            'Automatic-Module-Name'   : 'com.aether.client'
+        ])
+    }
+}
+
+tasks.register('verifyJar') {
+    dependsOn tasks.named('jar')
+    doLast {
+        File jarFile = tasks.named('jar').get().archiveFile.get().asFile
+        if (!jarFile.exists()) {
+            throw new GradleException("JAR file does not exist: " + jarFile.getAbsolutePath())
+        }
+        if (jarFile.length() < 1000) {
+            throw new GradleException("JAR file is suspiciously small: " + jarFile.length() + " bytes")
+        }
+
+        // Validate complete ZIP central directory and end header
+        try (java.util.zip.ZipFile zip = new java.util.zip.ZipFile(jarFile)) {
+            java.util.Enumeration<? extends java.util.zip.ZipEntry> entries = zip.entries();
+            int count = 0;
+            boolean hasModsToml = false;
+            boolean hasManifest = false;
+            boolean hasEntrypoint = false;
+            boolean hasPackMcmeta = false;
+
+            while (entries.hasMoreElements()) {
+                java.util.zip.ZipEntry entry = entries.nextElement();
+                count++;
+                if ("META-INF/mods.toml".equals(entry.getName())) hasModsToml = true;
+                if ("META-INF/MANIFEST.MF".equals(entry.getName())) hasManifest = true;
+                if ("com/aether/client/AetherMod.class".equals(entry.getName())) hasEntrypoint = true;
+                if ("pack.mcmeta".equals(entry.getName())) hasPackMcmeta = true;
+            }
+
+            if (!hasModsToml) throw new GradleException("Missing META-INF/mods.toml in JAR!");
+            if (!hasManifest) throw new GradleException("Missing META-INF/MANIFEST.MF in JAR!");
+            if (!hasEntrypoint) throw new GradleException("Missing com/aether/client/AetherMod.class in JAR!");
+            if (!hasPackMcmeta) throw new GradleException("Missing pack.mcmeta in JAR!");
+
+            logger.lifecycle("[Aether Build] Successfully verified JAR integrity: {} entries, {} bytes, valid ZIP EOCD header.",
+                    count, jarFile.length());
+        } catch (Exception e) {
+            throw new GradleException("JAR verification failed: " + e.getMessage(), e);
+        }
+    }
+}
+
+tasks.named('build') {
+    dependsOn tasks.named('verifyJar')
+}
